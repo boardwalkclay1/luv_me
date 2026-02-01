@@ -1,6 +1,10 @@
 const petalRing = document.getElementById("petalRing");
 const valentineAsk = document.getElementById("valentineAsk");
 
+const teddy = document.querySelector(".teddy");
+const rose = document.querySelector(".rose");
+const chocolate = document.querySelector(".chocolate");
+
 let lines = [
   "He loves me 💖",
   "He loves me not 💔",
@@ -12,7 +16,7 @@ let lines = [
 
 let pulled = 0;
 
-/* BUILD PETALS — user can click ANY one */
+/* 🌸 BUILD PETALS — ANY ORDER */
 function buildPetals() {
   const total = lines.length;
 
@@ -20,7 +24,7 @@ function buildPetals() {
     const p = document.createElement("div");
     const angle = (360 / total) * i;
 
-    p.style.transform = `rotate(${angle}deg) translate(0, -110px)`;
+    p.style.transform = `rotate(${angle}deg) translate(0, -95px)`;
     p.dataset.index = i;
 
     petalRing.appendChild(p);
@@ -30,7 +34,7 @@ function buildPetals() {
 
 buildPetals();
 
-/* FLOATING WORDS */
+/* 💬 FLOATING WORDS */
 function spawnFloatingWord(text) {
   const word = document.createElement("div");
   word.classList.add("floatingWord");
@@ -40,19 +44,29 @@ function spawnFloatingWord(text) {
   word.style.top = Math.random() * (window.innerHeight - 200) + "px";
 
   document.body.appendChild(word);
-
   setTimeout(() => word.remove(), 2000);
 }
 
-/* PETAL PULLING */
+/* 🌸 PETAL PULLING */
 function pluck(e) {
   const index = parseInt(e.target.dataset.index);
 
   spawnFloatingWord(lines[index]);
 
   e.target.style.opacity = "0";
-  e.target.style.transform += " scale(0.4)";
+  e.target.style.transform += " scale(.4)";
   setTimeout(() => e.target.remove(), 400);
+
+  /* POPUPS */
+  if (pulled % 3 === 0) teddy.classList.add("show");
+  if (pulled % 3 === 1) rose.classList.add("show");
+  if (pulled % 3 === 2) chocolate.classList.add("show");
+
+  setTimeout(() => {
+    teddy.classList.remove("show");
+    rose.classList.remove("show");
+    chocolate.classList.remove("show");
+  }, 1500);
 
   pulled++;
 
@@ -62,20 +76,21 @@ function pluck(e) {
   }
 }
 
-/* HAYWIRE MODE */
+/* 🤯 HAYWIRE */
 function goHaywire() {
   document.querySelector(".flower").classList.add("haywire");
 }
 
-/* FINAL PETAL */
+/* 🌸 FINAL PETAL */
 function showFinalPetal() {
   const final = document.createElement("div");
   final.id = "finalPetal";
   final.innerText = "💘";
+
   final.style.position = "absolute";
-  final.style.top = "110px";
-  final.style.left = "75px";
-  final.style.transform = "translate(0, -110px)";
+  final.style.top = "115px";
+  final.style.left = "80px";
+  final.style.transform = "translate(0, -95px)";
   final.style.zIndex = "20";
 
   final.addEventListener("click", () => {
@@ -87,33 +102,26 @@ function showFinalPetal() {
   petalRing.appendChild(final);
 }
 
-/* YES / NO BUTTON LOGIC */
+/* ❤️ YES / ❌ NO */
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 
 let dodges = 0;
-const maxDodges = 4;
 
 function moveNo() {
-  const w = window.innerWidth - 80;
-  const h = window.innerHeight - 40;
-
-  noBtn.style.left = Math.random() * w + "px";
-  noBtn.style.top = Math.random() * h + "px";
+  noBtn.style.left = Math.random() * (window.innerWidth - 80) + "px";
+  noBtn.style.top = Math.random() * (window.innerHeight - 40) + "px";
 }
 
 noBtn.addEventListener("mouseover", () => {
   dodges++;
-
-  if (dodges >= maxDodges) {
+  if (dodges >= 4) {
     const rect = yesBtn.getBoundingClientRect();
     noBtn.style.left = rect.left + "px";
     noBtn.style.top = rect.top + "px";
-
     noBtn.addEventListener("mousedown", moveNo, { once: true });
     return;
   }
-
   moveNo();
 });
 
