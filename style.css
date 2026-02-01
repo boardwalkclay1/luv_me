@@ -35,9 +35,10 @@ body {
   width: 260px;
   height: 260px;
   margin: auto;
+  z-index: 5; /* flower stays above stem */
 }
 
-/* CENTER */
+/* CENTER — NEW COLOR (PINK) */
 .center {
   width: 90px;
   height: 90px;
@@ -47,30 +48,27 @@ body {
   top: 85px;
   left: 85px;
   box-shadow: 0 0 20px rgba(255,255,255,0.8), inset 0 0 15px rgba(0,0,0,0.2);
-  z-index: 5;
+  z-index: 10;
 }
 
-/* PETALS */
-#petalRing div, #finalPetal {
-  width: 120px;
-  height: 60px;
+/* PETALS — closer to center */
+#petalRing div,
+#finalPetal {
+  width: 110px;
+  height: 55px;
   background: radial-gradient(circle at 30% 30%, #ffc2d8, #ff6f9d);
   border-radius: 70px 70px 50px 50px;
   position: absolute;
-  top: 100px;
-  left: 70px;
+  top: 110px;
+  left: 75px;
   transform-origin: 50% 50%;
   cursor: pointer;
   box-shadow: 0 0 10px white, inset 0 0 10px rgba(0,0,0,0.2);
   transition: transform 0.3s ease, opacity 0.4s ease;
+  z-index: 12;
 }
 
-/* FINAL PETAL HIDDEN INITIALLY */
-#finalPetal {
-  display: none;
-}
-
-/* STEM */
+/* STEM — BEHIND EVERYTHING */
 .stem {
   width: 24px;
   height: 240px;
@@ -79,6 +77,7 @@ body {
   position: absolute;
   top: 220px;
   left: 118px;
+  z-index: 1; /* BEHIND EVERYTHING */
 }
 
 /* LEAVES */
@@ -89,19 +88,21 @@ body {
   border-radius: 60px;
   position: absolute;
   top: 280px;
-  box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+  z-index: 2;
 }
 
 .leaf.left { left: 30px; transform: rotate(-30deg); }
 .leaf.right { left: 150px; transform: rotate(30deg); }
 
-/* FLOATING WORDS */
+/* FLOATING WORDS — ALWAYS VISIBLE */
 .floatingWord {
-  position: absolute;
+  position: fixed;
   font-size: 2rem;
   opacity: 0;
   animation: floatFade 2s ease forwards;
   pointer-events: none;
+  text-shadow: 0 0 8px #fff;
+  z-index: 9999;
 }
 
 @keyframes floatFade {
@@ -110,7 +111,7 @@ body {
   100% { opacity: 0; transform: translateY(-40px) scale(1.2); }
 }
 
-/* HAYWIRE ANIMATION */
+/* HAYWIRE MODE */
 .haywire {
   animation: shake 0.15s infinite;
 }
