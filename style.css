@@ -27,15 +27,16 @@ body {
   margin-top: 10px;
 }
 
+/* Flower container sits BELOW floating words & popups */
 .flower {
   position: relative;
   width: 260px;
   height: 260px;
   margin: auto;
-  z-index: 5;
+  z-index: 2;
 }
 
-/* 🌸 Pink center */
+/* Pink center */
 .center {
   width: 90px;
   height: 90px;
@@ -47,7 +48,7 @@ body {
   z-index: 10;
 }
 
-/* 🌸 Petals */
+/* Petals */
 #petalRing div,
 #finalPetal {
   width: 100px;
@@ -64,7 +65,7 @@ body {
   z-index: 12;
 }
 
-/* 🌿 Stem behind everything */
+/* Stem ALWAYS behind everything */
 .stem {
   width: 20px;
   height: 240px;
@@ -73,7 +74,7 @@ body {
   position: absolute;
   top: 220px;
   left: 120px;
-  z-index: 1;
+  z-index: 0;
 }
 
 .leaf {
@@ -83,13 +84,13 @@ body {
   border-radius: 50px;
   position: absolute;
   top: 280px;
-  z-index: 2;
+  z-index: 1;
 }
 
 .leaf.left { left: 30px; transform: rotate(-30deg); }
 .leaf.right { left: 150px; transform: rotate(30deg); }
 
-/* 💬 Floating words */
+/* Floating words */
 .floatingWord {
   position: fixed;
   font-size: 2rem;
@@ -105,7 +106,7 @@ body {
   100% { opacity: 0; transform: translateY(-40px) scale(1.2); }
 }
 
-/* 🤯 Haywire */
+/* Haywire */
 .haywire { animation: shake .15s infinite; }
 
 @keyframes shake {
@@ -114,7 +115,7 @@ body {
   100% { transform: rotate(-3deg); }
 }
 
-/* POPUPS */
+/* Popups */
 .popup {
   position: fixed;
   bottom: -150px;
@@ -129,7 +130,7 @@ body {
 .popup.rose { left: 45%; }
 .popup.chocolate { left: 70%; }
 
-/* VALENTINE ASK */
+/* Valentine ask */
 .ask {
   font-size: 2.2rem;
   margin-top: 20px;
