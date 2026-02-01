@@ -3,17 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <title>Happy Valentine’s Day ❤️</title>
-  <link rel="stylesheet" href="style.css">
+
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #ff9ecb, #ff4f81);
+      font-family: "Poppins", sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      position: relative;
+    }
+
+    .center {
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      animation: fadeIn 1.2s ease-out forwards;
+      max-width: 700px;
+      padding: 0 20px;
+    }
+
+    .finalTitle {
+      font-size: 3rem;
+      text-shadow: 0 0 15px white;
+      animation: slideDown 1.2s ease-out forwards;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 1.4rem;
+      opacity: 0;
+      animation: fadeIn 1.8s ease-out forwards;
+      margin-bottom: 30px;
+    }
+
+    /* POEM */
+    .poem {
+      font-size: 1.8rem;
+      line-height: 1.6;
+      opacity: 0;
+      animation: poemFade 2.4s ease-out forwards;
+      animation-delay: .6s;
+      white-space: pre-line;
+      text-shadow: 0 0 12px rgba(255,255,255,0.9);
+      font-weight: 500;
+    }
+
+    @keyframes poemFade {
+      0% { opacity: 0; transform: translateY(25px) scale(.95); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* FLOATING HEARTS */
+    .heart {
+      position: fixed;
+      animation: floatUp 3s linear forwards;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(.8); opacity: 1; }
+      100% { transform: translateY(-120vh) scale(1.4); opacity: 0; }
+    }
+
+    /* PAGE ANIMATIONS */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
+
 <body>
 
   <div class="center">
     <h1 class="finalTitle">Happy Valentine’s Day ❤️</h1>
     <p class="subtitle">From me to you — with all my heart.</p>
+
+    <div class="poem">
+      Roses are red,  
+      violets are blue,  
+      I'd hate to spend  
+      my Valentine without you.
+    </div>
   </div>
 
   <script>
-    // Confetti hearts
+    // Floating hearts
     setInterval(() => {
       const h = document.createElement("div");
       h.classList.add("heart");
