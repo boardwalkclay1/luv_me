@@ -1,19 +1,23 @@
-const petalWrap = document.getElementById("petalWrap");
+const petalRing = document.getElementById("petalRing");
 const petalText = document.getElementById("petalText");
 const valentineAsk = document.getElementById("valentineAsk");
 
+const teddy = document.querySelector(".teddy");
+const rose = document.querySelector(".rose");
+const chocolate = document.querySelector(".chocolate");
+
 let lines = [
-  "He loves me",
-  "He loves me not",
-  "He loves me",
-  "He loves me not",
-  "He loves me",
-  "He loves me not"
+  "He loves me 💖",
+  "He loves me not 💔",
+  "He loves me 💖",
+  "He loves me not 💔",
+  "He loves me 💖",
+  "He loves me not 💔"
 ];
 
 let current = 0;
 
-// Build petals in a circle
+// Build petals
 function buildPetals() {
   const total = lines.length;
 
@@ -22,7 +26,7 @@ function buildPetals() {
     const angle = (360 / total) * i;
     p.style.transform = `rotate(${angle}deg) translateY(-130px)`;
     p.dataset.index = i;
-    petalWrap.appendChild(p);
+    petalRing.appendChild(p);
 
     p.addEventListener("click", pluck);
   }
@@ -39,11 +43,22 @@ function pluck(e) {
   e.target.style.transform += " scale(0.5)";
   setTimeout(() => e.target.remove(), 400);
 
+  // POPUP ANIMATION
+  if (current % 3 === 0) teddy.classList.add("show");
+  if (current % 3 === 1) rose.classList.add("show");
+  if (current % 3 === 2) chocolate.classList.add("show");
+
+  setTimeout(() => {
+    teddy.classList.remove("show");
+    rose.classList.remove("show");
+    chocolate.classList.remove("show");
+  }, 1500);
+
   current++;
 
   if (current === lines.length) {
-    setTimeout(() => petalText.innerText = "He loves me…", 800);
-    setTimeout(() => petalText.innerText = "He loves me not…", 1600);
+    setTimeout(() => petalText.innerText = "He loves me… 🌸", 800);
+    setTimeout(() => petalText.innerText = "He loves me not… 💔", 1600);
 
     setTimeout(() => {
       petalText.innerText = "🌹 He loves me 🌹";
