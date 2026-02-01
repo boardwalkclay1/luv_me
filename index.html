@@ -7,25 +7,29 @@
 </head>
 <body>
 
-  <div class="rose-container">
+  <div class="container">
+
     <h1 class="title">Pull a Petal…</h1>
 
-    <div id="rose">
-      <img id="stem" src="stem.png" alt="stem" />
-      <div id="petals"></div>
+    <div class="flower">
+      <div class="flower-center"></div>
+      <div id="petalRing"></div>
+      <div class="stem"></div>
+      <div class="leaf left"></div>
+      <div class="leaf right"></div>
     </div>
 
-    <div id="petalText"></div>
+    <div id="petalResult"></div>
 
     <div id="valentineAsk" class="hidden">
-      <h2>Will you be my Valentine?</h2>
+      <h2 class="ask">Will you be my Valentine?</h2>
 
-      <button id="yesBtn">YES 💘</button>
-      <button id="noBtn">no</button>
+      <button id="yesBtn" class="yes">YES 💘</button>
+      <button id="noBtn" class="no">no</button>
     </div>
 
   </div>
 
-  <script src="rose.js"></script>
+  <script src="flower.js"></script>
 </body>
 </html>
