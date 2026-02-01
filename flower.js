@@ -1,8 +1,8 @@
-const petalRing = document.getElementById("petalRing");
-const petalResult = document.getElementById("petalResult");
+const petalWrap = document.getElementById("petalWrap");
+const petalText = document.getElementById("petalText");
 const valentineAsk = document.getElementById("valentineAsk");
 
-let petalLines = [
+let lines = [
   "He loves me",
   "He loves me not",
   "He loves me",
@@ -13,37 +13,40 @@ let petalLines = [
 
 let current = 0;
 
-// Create petals in a circle
+// Build petals in a circle
 function buildPetals() {
-  const total = petalLines.length;
+  const total = lines.length;
 
   for (let i = 0; i < total; i++) {
     const p = document.createElement("div");
     const angle = (360 / total) * i;
-    p.style.transform = `rotate(${angle}deg) translateY(-120px)`;
+    p.style.transform = `rotate(${angle}deg) translateY(-130px)`;
     p.dataset.index = i;
-    petalRing.appendChild(p);
+    petalWrap.appendChild(p);
 
-    p.addEventListener("click", pluckPetal);
+    p.addEventListener("click", pluck);
   }
 }
 
 buildPetals();
 
-function pluckPetal(e) {
+function pluck(e) {
   const i = parseInt(e.target.dataset.index);
   if (i !== current) return;
 
-  petalResult.innerText = petalLines[current];
-  e.target.remove();
+  petalText.innerText = lines[current];
+  e.target.style.opacity = "0";
+  e.target.style.transform += " scale(0.5)";
+  setTimeout(() => e.target.remove(), 400);
+
   current++;
 
-  if (current === petalLines.length) {
-    setTimeout(() => petalResult.innerText = "He loves me…", 800);
-    setTimeout(() => petalResult.innerText = "He loves me not…", 1600);
+  if (current === lines.length) {
+    setTimeout(() => petalText.innerText = "He loves me…", 800);
+    setTimeout(() => petalText.innerText = "He loves me not…", 1600);
 
     setTimeout(() => {
-      petalResult.innerText = "🌹 He loves me 🌹";
+      petalText.innerText = "🌹 He loves me 🌹";
       valentineAsk.classList.remove("hidden");
     }, 2600);
   }
