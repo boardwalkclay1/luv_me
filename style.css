@@ -21,7 +21,7 @@ body {
   margin-bottom: 20px;
 }
 
-/* FLOWER */
+/* FLOWER BASE */
 .flower {
   position: relative;
   width: 260px;
@@ -29,54 +29,61 @@ body {
   margin: auto;
 }
 
-.flower-center {
+/* CENTER — SEMI‑REALISTIC */
+.center {
   width: 90px;
   height: 90px;
-  background: #ffd84f;
+  background: radial-gradient(circle at 30% 30%, #ffe98a, #ffcf3f);
   border-radius: 50%;
   position: absolute;
   top: 85px;
   left: 85px;
-  box-shadow: 0 0 15px #fff;
+  box-shadow: 0 0 20px rgba(255,255,255,0.8), inset 0 0 15px rgba(0,0,0,0.2);
   z-index: 5;
 }
 
-#petalRing div {
-  width: 110px;
-  height: 55px;
-  background: #ff7aa8;
-  border-radius: 60px;
+/* PETALS — SEMI‑REALISTIC */
+#petalWrap div {
+  width: 120px;
+  height: 60px;
+  background: radial-gradient(circle at 30% 30%, #ffb3c9, #ff6f9d);
+  border-radius: 70px 70px 50px 50px;
   position: absolute;
   top: 100px;
-  left: 75px;
+  left: 70px;
   transform-origin: 50% 100%;
   cursor: pointer;
-  box-shadow: 0 0 10px white;
+  box-shadow: 
+    0 0 10px rgba(255,255,255,0.8),
+    inset 0 0 10px rgba(0,0,0,0.2);
+  transition: transform 0.2s, opacity 0.4s;
 }
 
-/* STEM */
+/* STEM — SEMI‑REALISTIC */
 .stem {
-  width: 22px;
-  height: 220px;
-  background: #3fa34d;
+  width: 24px;
+  height: 240px;
+  background: linear-gradient(#3fa34d, #2d7a38);
   border-radius: 20px;
   position: absolute;
   top: 220px;
-  left: 120px;
+  left: 118px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
 }
 
-/* LEAVES */
+/* LEAVES — SEMI‑REALISTIC */
 .leaf {
-  width: 90px;
-  height: 45px;
-  background: #3fa34d;
-  border-radius: 50px;
+  width: 100px;
+  height: 50px;
+  background: radial-gradient(circle at 30% 30%, #4ccf5f, #2d7a38);
+  border-radius: 60px;
   position: absolute;
   top: 280px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
 }
 
 .leaf.left {
-  left: 40px;
+  left: 30px;
   transform: rotate(-30deg);
 }
 
@@ -85,8 +92,8 @@ body {
   transform: rotate(30deg);
 }
 
-/* PETAL RESULT TEXT */
-#petalResult {
+/* PETAL TEXT */
+#petalText {
   margin-top: 20px;
   font-size: 1.8rem;
   min-height: 40px;
@@ -124,7 +131,6 @@ body {
   margin-left: 20px;
 }
 
-/* HIDDEN */
 .hidden {
   display: none;
 }
