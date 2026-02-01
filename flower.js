@@ -17,33 +17,36 @@ let lines = [
 
 let current = 0;
 
-// Build petals
+/* BUILD PETALS IN A PERFECT CIRCLE */
 function buildPetals() {
   const total = lines.length;
 
   for (let i = 0; i < total; i++) {
     const p = document.createElement("div");
     const angle = (360 / total) * i;
-    p.style.transform = `rotate(${angle}deg) translateY(-130px)`;
-    p.dataset.index = i;
-    petalRing.appendChild(p);
 
+    p.style.transform = `rotate(${angle}deg) translate(0, -130px)`;
+    p.dataset.index = i;
+
+    petalRing.appendChild(p);
     p.addEventListener("click", pluck);
   }
 }
 
 buildPetals();
 
+/* PETAL PULLING */
 function pluck(e) {
   const i = parseInt(e.target.dataset.index);
   if (i !== current) return;
 
   petalText.innerText = lines[current];
+
   e.target.style.opacity = "0";
-  e.target.style.transform += " scale(0.5)";
+  e.target.style.transform += " scale(0.4)";
   setTimeout(() => e.target.remove(), 400);
 
-  // POPUP ANIMATION
+  /* POPUP EMOJIS */
   if (current % 3 === 0) teddy.classList.add("show");
   if (current % 3 === 1) rose.classList.add("show");
   if (current % 3 === 2) chocolate.classList.add("show");
@@ -56,6 +59,7 @@ function pluck(e) {
 
   current++;
 
+  /* LAST PETAL LOGIC */
   if (current === lines.length) {
     setTimeout(() => petalText.innerText = "He loves me… 🌸", 800);
     setTimeout(() => petalText.innerText = "He loves me not… 💔", 1600);
@@ -67,7 +71,7 @@ function pluck(e) {
   }
 }
 
-// YES / NO BUTTON LOGIC
+/* YES / NO BUTTON LOGIC */
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 
