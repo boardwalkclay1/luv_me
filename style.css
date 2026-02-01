@@ -1,4 +1,3 @@
-/* GLOBAL */
 body {
   margin: 0;
   background: linear-gradient(135deg, #ff9ecb, #ff4f81);
@@ -11,81 +10,69 @@ body {
   color: white;
 }
 
-.layout {
-  text-align: center;
-  width: 100%;
-}
+.layout { text-align: center; width: 100%; }
 
-/* TITLE */
 .title {
   font-size: 2.8rem;
   text-shadow: 0 0 12px white;
   margin-bottom: 10px;
 }
 
-/* FLOWER AREA */
-.flower-area {
-  height: 320px;
-  margin-top: 10px;
-}
+.flower-area { height: 320px; margin-top: 10px; }
 
-/* FLOWER */
 .flower {
   position: relative;
   width: 260px;
   height: 260px;
   margin: auto;
-  z-index: 5; /* flower stays above stem */
+  z-index: 5;
 }
 
-/* CENTER — NEW COLOR (PINK) */
+/* 🌸 CENTER — pink like emoji */
 .center {
   width: 90px;
   height: 90px;
-  background: radial-gradient(circle at 30% 30%, #ffb3d1, #ff6fa3);
+  background: radial-gradient(circle, #ffb3d1, #ff6fa3);
   border-radius: 50%;
   position: absolute;
   top: 85px;
   left: 85px;
-  box-shadow: 0 0 20px rgba(255,255,255,0.8), inset 0 0 15px rgba(0,0,0,0.2);
   z-index: 10;
 }
 
-/* PETALS — closer to center */
-#petalRing div,
-#finalPetal {
-  width: 110px;
-  height: 55px;
-  background: radial-gradient(circle at 30% 30%, #ffc2d8, #ff6f9d);
-  border-radius: 70px 70px 50px 50px;
+/* 🌸 PETALS — closer + emoji style */
+#petalRing div, #finalPetal {
+  width: 100px;
+  height: 50px;
+  background: radial-gradient(circle, #ffc2d8, #ff6f9d);
+  border-radius: 60px;
   position: absolute;
-  top: 110px;
-  left: 75px;
+  top: 115px;
+  left: 80px;
   transform-origin: 50% 50%;
   cursor: pointer;
-  box-shadow: 0 0 10px white, inset 0 0 10px rgba(0,0,0,0.2);
-  transition: transform 0.3s ease, opacity 0.4s ease;
+  box-shadow: 0 0 10px white;
+  transition: transform .3s, opacity .4s;
   z-index: 12;
 }
 
-/* STEM — BEHIND EVERYTHING */
+/* 🌿 STEM BEHIND EVERYTHING */
 .stem {
-  width: 24px;
+  width: 20px;
   height: 240px;
-  background: linear-gradient(#3fa34d, #2d7a38);
+  background: #3fa34d;
   border-radius: 20px;
   position: absolute;
   top: 220px;
-  left: 118px;
-  z-index: 1; /* BEHIND EVERYTHING */
+  left: 120px;
+  z-index: 1;
 }
 
-/* LEAVES */
 .leaf {
-  width: 100px;
-  height: 50px;
-  background: radial-gradient(circle at 30% 30%, #4ccf5f, #2d7a38);
-  border-radius: 60px;
+  width: 90px;
+  height: 45px;
+  background: #4ccf5f;
+  border-radius: 50px;
   position: absolute;
   top: 280px;
   z-index: 2;
@@ -94,27 +81,24 @@ body {
 .leaf.left { left: 30px; transform: rotate(-30deg); }
 .leaf.right { left: 150px; transform: rotate(30deg); }
 
-/* FLOATING WORDS — ALWAYS VISIBLE */
+/* 💬 FLOATING WORDS */
 .floatingWord {
   position: fixed;
   font-size: 2rem;
   opacity: 0;
-  animation: floatFade 2s ease forwards;
+  animation: floatFade 2s forwards;
   pointer-events: none;
-  text-shadow: 0 0 8px #fff;
   z-index: 9999;
 }
 
 @keyframes floatFade {
-  0% { opacity: 0; transform: translateY(20px) scale(0.8); }
+  0% { opacity: 0; transform: translateY(20px) scale(.8); }
   20% { opacity: 1; }
   100% { opacity: 0; transform: translateY(-40px) scale(1.2); }
 }
 
-/* HAYWIRE MODE */
-.haywire {
-  animation: shake 0.15s infinite;
-}
+/* 🤯 HAYWIRE */
+.haywire { animation: shake .15s infinite; }
 
 @keyframes shake {
   0% { transform: rotate(-3deg); }
@@ -122,30 +106,38 @@ body {
   100% { transform: rotate(-3deg); }
 }
 
-/* VALENTINE ASK */
-.ask {
-  font-size: 2.2rem;
-  margin-top: 20px;
+/* POPUPS */
+.popup {
+  position: fixed;
+  bottom: -200px;
+  font-size: 4rem;
+  transition: bottom .6s;
 }
 
-/* YES BUTTON */
+.popup.show { bottom: 20px; }
+
+.popup.teddy { left: 20%; }
+.popup.rose { left: 45%; }
+.popup.chocolate { left: 70%; }
+
+/* VALENTINE ASK */
+.ask { font-size: 2.2rem; margin-top: 20px; }
+
 .yes {
-  background: linear-gradient(135deg, #ff1744, #ff5f8f);
+  background: #ff1744;
   color: white;
-  font-size: 2.2rem;
-  padding: 22px 50px;
+  font-size: 2rem;
+  padding: 20px 45px;
   border: none;
   border-radius: 50px;
   cursor: pointer;
-  box-shadow: 0 0 25px #ff1744;
   margin-top: 20px;
 }
 
-/* NO BUTTON */
 .no {
   background: #333;
   color: white;
-  font-size: 0.9rem;
+  font-size: .9rem;
   padding: 8px 14px;
   border: none;
   border-radius: 10px;
