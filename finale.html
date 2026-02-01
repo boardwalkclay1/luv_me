@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Valentine’s Day ❤️</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="center">
+    <h1 class="finalTitle">Happy Valentine’s Day ❤️</h1>
+    <p class="subtitle">From me to you — with all my heart.</p>
+  </div>
+
+  <script>
+    // Confetti hearts
+    setInterval(() => {
+      const h = document.createElement("div");
+      h.classList.add("heart");
+      h.innerText = "❤️";
+      h.style.left = Math.random() * window.innerWidth + "px";
+      h.style.top = window.innerHeight + "px";
+      h.style.fontSize = (Math.random() * 30 + 20) + "px";
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 3000);
+    }, 200);
+  </script>
+
+</body>
+</html>
