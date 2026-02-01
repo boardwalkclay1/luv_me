@@ -10,9 +10,9 @@ let lines = [
   "He loves me not 💔"
 ];
 
-let current = 0;
+let pulled = 0;
 
-/* BUILD PETALS */
+/* BUILD PETALS — user can click ANY one */
 function buildPetals() {
   const total = lines.length;
 
@@ -20,7 +20,7 @@ function buildPetals() {
     const p = document.createElement("div");
     const angle = (360 / total) * i;
 
-    p.style.transform = `rotate(${angle}deg) translate(0, -130px)`;
+    p.style.transform = `rotate(${angle}deg) translate(0, -110px)`;
     p.dataset.index = i;
 
     petalRing.appendChild(p);
@@ -46,19 +46,17 @@ function spawnFloatingWord(text) {
 
 /* PETAL PULLING */
 function pluck(e) {
-  const i = parseInt(e.target.dataset.index);
-  if (i !== current) return;
+  const index = parseInt(e.target.dataset.index);
 
-  spawnFloatingWord(lines[current]);
+  spawnFloatingWord(lines[index]);
 
   e.target.style.opacity = "0";
   e.target.style.transform += " scale(0.4)";
   setTimeout(() => e.target.remove(), 400);
 
-  current++;
+  pulled++;
 
-  /* LAST PETAL LOGIC */
-  if (current === lines.length) {
+  if (pulled === lines.length) {
     goHaywire();
     setTimeout(showFinalPetal, 1500);
   }
@@ -74,11 +72,11 @@ function showFinalPetal() {
   const final = document.createElement("div");
   final.id = "finalPetal";
   final.innerText = "💘";
-  final.style.display = "block";
-  final.style.transform = "translate(0, -130px)";
   final.style.position = "absolute";
-  final.style.top = "100px";
-  final.style.left = "70px";
+  final.style.top = "110px";
+  final.style.left = "75px";
+  final.style.transform = "translate(0, -110px)";
+  final.style.zIndex = "20";
 
   final.addEventListener("click", () => {
     spawnFloatingWord("He LOVES you! 💘");
