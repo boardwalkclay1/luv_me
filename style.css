@@ -169,3 +169,28 @@ body {
 }
 
 .hidden { display: none; }
+/* STEM BEHIND EVERYTHING */
+.stem {
+  position: absolute;
+  z-index: 1;
+}
+
+/* FLOWER BELOW TEXT */
+.flower,
+.flower-area {
+  position: relative;
+  z-index: 5;
+}
+
+/* TEXT ABOVE FLOWER */
+#valentineAsk,
+.layout {
+  position: relative;
+  z-index: 9999;
+}
+
+/* POPUPS + FLOATING WORDS ABOVE ALL */
+.popup,
+.floatingWord {
+  z-index: 99999;
+}
