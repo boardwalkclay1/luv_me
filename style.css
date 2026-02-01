@@ -1,3 +1,4 @@
+/* GLOBAL */
 body {
   margin: 0;
   background: linear-gradient(135deg, #ff9ecb, #ff4f81);
@@ -15,18 +16,20 @@ body {
   width: 100%;
 }
 
+/* TITLE */
 .title {
-  font-size: 2.6rem;
+  font-size: 2.8rem;
   text-shadow: 0 0 12px white;
   margin-bottom: 10px;
 }
 
 /* FLOWER AREA */
 .flower-area {
+  height: 320px;
   margin-top: 10px;
-  height: 300px;
 }
 
+/* FLOWER */
 .flower {
   position: relative;
   width: 260px;
@@ -34,11 +37,11 @@ body {
   margin: auto;
 }
 
-/* CENTER */
+/* CENTER — NEW COLOR (PINK) */
 .center {
   width: 90px;
   height: 90px;
-  background: radial-gradient(circle at 30% 30%, #ffe98a, #ffcf3f);
+  background: radial-gradient(circle at 30% 30%, #ffb3d1, #ff6fa3);
   border-radius: 50%;
   position: absolute;
   top: 85px;
@@ -47,19 +50,19 @@ body {
   z-index: 5;
 }
 
-/* PETALS */
+/* PETALS — SEMI‑REALISTIC */
 #petalRing div {
   width: 120px;
   height: 60px;
-  background: radial-gradient(circle at 30% 30%, #ffb3c9, #ff6f9d);
+  background: radial-gradient(circle at 30% 30%, #ffc2d8, #ff6f9d);
   border-radius: 70px 70px 50px 50px;
   position: absolute;
   top: 100px;
   left: 70px;
-  transform-origin: 50% 100%;
+  transform-origin: 50% 50%;
   cursor: pointer;
   box-shadow: 0 0 10px white, inset 0 0 10px rgba(0,0,0,0.2);
-  transition: transform 0.2s, opacity 0.4s;
+  transition: transform 0.3s ease, opacity 0.4s ease;
 }
 
 /* STEM */
@@ -81,28 +84,30 @@ body {
   border-radius: 60px;
   position: absolute;
   top: 280px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
 }
 
 .leaf.left { left: 30px; transform: rotate(-30deg); }
 .leaf.right { left: 150px; transform: rotate(30deg); }
 
-/* PETAL TEXT */
-.petal-text {
-  margin-top: 20px;
-  font-size: 1.8rem;
-  min-height: 40px;
+/* PETAL TEXT — MOVED AWAY FROM FLOWER */
+#petalText {
+  margin-top: 40px;
+  font-size: 2rem;
+  min-height: 50px;
+  text-shadow: 0 0 10px white;
 }
 
-/* POPUPS */
+/* POPUP EMOJIS */
 .popup {
   position: fixed;
   bottom: -200px;
-  font-size: 4rem;
+  font-size: 4.5rem;
   transition: bottom 0.6s ease;
 }
 
 .popup.show {
-  bottom: 20px;
+  bottom: 30px;
 }
 
 .popup.teddy { left: 20%; }
@@ -111,7 +116,7 @@ body {
 
 /* VALENTINE ASK */
 .ask {
-  font-size: 2rem;
+  font-size: 2.2rem;
   margin-top: 20px;
 }
 
@@ -119,12 +124,12 @@ body {
 .yes {
   background: linear-gradient(135deg, #ff1744, #ff5f8f);
   color: white;
-  font-size: 2rem;
-  padding: 20px 45px;
+  font-size: 2.2rem;
+  padding: 22px 50px;
   border: none;
   border-radius: 50px;
   cursor: pointer;
-  box-shadow: 0 0 20px #ff1744;
+  box-shadow: 0 0 25px #ff1744;
   margin-top: 20px;
 }
 
@@ -132,13 +137,12 @@ body {
 .no {
   background: #333;
   color: white;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   padding: 8px 14px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   position: absolute;
-  margin-left: 20px;
 }
 
 .hidden { display: none; }
