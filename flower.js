@@ -16,7 +16,7 @@ let lines = [
 
 let pulled = 0;
 
-/* 🌸 BUILD PETALS — ANY ORDER */
+/* 🌸 Build petals */
 function buildPetals() {
   const total = lines.length;
 
@@ -34,7 +34,7 @@ function buildPetals() {
 
 buildPetals();
 
-/* 💬 FLOATING WORDS */
+/* 💬 Floating words */
 function spawnFloatingWord(text) {
   const word = document.createElement("div");
   word.classList.add("floatingWord");
@@ -47,7 +47,14 @@ function spawnFloatingWord(text) {
   setTimeout(() => word.remove(), 2000);
 }
 
-/* 🌸 PETAL PULLING */
+/* POPUPS */
+function showPopup(type) {
+  const el = document.querySelector("." + type);
+  el.classList.add("show");
+  setTimeout(() => el.classList.remove("show"), 1200);
+}
+
+/* 🌸 Petal pulling */
 function pluck(e) {
   const index = parseInt(e.target.dataset.index);
 
@@ -57,16 +64,9 @@ function pluck(e) {
   e.target.style.transform += " scale(.4)";
   setTimeout(() => e.target.remove(), 400);
 
-  /* POPUPS */
-  if (pulled % 3 === 0) teddy.classList.add("show");
-  if (pulled % 3 === 1) rose.classList.add("show");
-  if (pulled % 3 === 2) chocolate.classList.add("show");
-
-  setTimeout(() => {
-    teddy.classList.remove("show");
-    rose.classList.remove("show");
-    chocolate.classList.remove("show");
-  }, 1500);
+  if (pulled % 3 === 0) showPopup("teddy");
+  if (pulled % 3 === 1) showPopup("rose");
+  if (pulled % 3 === 2) showPopup("chocolate");
 
   pulled++;
 
@@ -76,12 +76,12 @@ function pluck(e) {
   }
 }
 
-/* 🤯 HAYWIRE */
+/* 🤯 Haywire */
 function goHaywire() {
   document.querySelector(".flower").classList.add("haywire");
 }
 
-/* 🌸 FINAL PETAL */
+/* 🌸 Final petal */
 function showFinalPetal() {
   const final = document.createElement("div");
   final.id = "finalPetal";
@@ -102,28 +102,19 @@ function showFinalPetal() {
   petalRing.appendChild(final);
 }
 
-/* ❤️ YES / ❌ NO */
+/* ❌ NO button runs forever + stays on screen */
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 
-let dodges = 0;
-
 function moveNo() {
-  noBtn.style.left = Math.random() * (window.innerWidth - 80) + "px";
-  noBtn.style.top = Math.random() * (window.innerHeight - 40) + "px";
+  const maxX = window.innerWidth - noBtn.offsetWidth - 20;
+  const maxY = window.innerHeight - noBtn.offsetHeight - 20;
+
+  noBtn.style.left = Math.random() * maxX + "px";
+  noBtn.style.top = Math.random() * maxY + "px";
 }
 
-noBtn.addEventListener("mouseover", () => {
-  dodges++;
-  if (dodges >= 4) {
-    const rect = yesBtn.getBoundingClientRect();
-    noBtn.style.left = rect.left + "px";
-    noBtn.style.top = rect.top + "px";
-    noBtn.addEventListener("mousedown", moveNo, { once: true });
-    return;
-  }
-  moveNo();
-});
+noBtn.addEventListener("mouseover", moveNo);
 
 yesBtn.addEventListener("click", () => {
   window.location.href = "joy.html";
