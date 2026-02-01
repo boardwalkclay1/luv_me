@@ -16,7 +16,7 @@ let lines = [
 
 let pulled = 0;
 
-/* 🌸 Build petals */
+/* Build petals */
 function buildPetals() {
   const total = lines.length;
 
@@ -34,7 +34,7 @@ function buildPetals() {
 
 buildPetals();
 
-/* 💬 Floating words */
+/* Floating words */
 function spawnFloatingWord(text) {
   const word = document.createElement("div");
   word.classList.add("floatingWord");
@@ -47,14 +47,14 @@ function spawnFloatingWord(text) {
   setTimeout(() => word.remove(), 2000);
 }
 
-/* POPUPS */
+/* Popups */
 function showPopup(type) {
   const el = document.querySelector("." + type);
   el.classList.add("show");
   setTimeout(() => el.classList.remove("show"), 1200);
 }
 
-/* 🌸 Petal pulling */
+/* Petal pulling */
 function pluck(e) {
   const index = parseInt(e.target.dataset.index);
 
@@ -76,12 +76,12 @@ function pluck(e) {
   }
 }
 
-/* 🤯 Haywire */
+/* Haywire */
 function goHaywire() {
   document.querySelector(".flower").classList.add("haywire");
 }
 
-/* 🌸 Final petal */
+/* Final petal */
 function showFinalPetal() {
   const final = document.createElement("div");
   final.id = "finalPetal";
@@ -102,7 +102,7 @@ function showFinalPetal() {
   petalRing.appendChild(final);
 }
 
-/* ❌ NO button runs forever + stays on screen */
+/* NO button dodging */
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 
