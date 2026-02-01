@@ -1,10 +1,5 @@
 const petalRing = document.getElementById("petalRing");
-const petalText = document.getElementById("petalText");
 const valentineAsk = document.getElementById("valentineAsk");
-
-const teddy = document.querySelector(".teddy");
-const rose = document.querySelector(".rose");
-const chocolate = document.querySelector(".chocolate");
 
 let lines = [
   "He loves me 💖",
@@ -17,7 +12,7 @@ let lines = [
 
 let current = 0;
 
-/* BUILD PETALS IN A PERFECT CIRCLE */
+/* BUILD PETALS */
 function buildPetals() {
   const total = lines.length;
 
@@ -35,40 +30,63 @@ function buildPetals() {
 
 buildPetals();
 
+/* FLOATING WORDS */
+function spawnFloatingWord(text) {
+  const word = document.createElement("div");
+  word.classList.add("floatingWord");
+  word.innerText = text;
+
+  word.style.left = Math.random() * (window.innerWidth - 200) + "px";
+  word.style.top = Math.random() * (window.innerHeight - 200) + "px";
+
+  document.body.appendChild(word);
+
+  setTimeout(() => word.remove(), 2000);
+}
+
 /* PETAL PULLING */
 function pluck(e) {
   const i = parseInt(e.target.dataset.index);
   if (i !== current) return;
 
-  petalText.innerText = lines[current];
+  spawnFloatingWord(lines[current]);
 
   e.target.style.opacity = "0";
   e.target.style.transform += " scale(0.4)";
   setTimeout(() => e.target.remove(), 400);
 
-  /* POPUP EMOJIS */
-  if (current % 3 === 0) teddy.classList.add("show");
-  if (current % 3 === 1) rose.classList.add("show");
-  if (current % 3 === 2) chocolate.classList.add("show");
-
-  setTimeout(() => {
-    teddy.classList.remove("show");
-    rose.classList.remove("show");
-    chocolate.classList.remove("show");
-  }, 1500);
-
   current++;
 
   /* LAST PETAL LOGIC */
   if (current === lines.length) {
-    setTimeout(() => petalText.innerText = "He loves me… 🌸", 800);
-    setTimeout(() => petalText.innerText = "He loves me not… 💔", 1600);
-
-    setTimeout(() => {
-      petalText.innerText = "🌹 He loves me 🌹";
-      valentineAsk.classList.remove("hidden");
-    }, 2600);
+    goHaywire();
+    setTimeout(showFinalPetal, 1500);
   }
+}
+
+/* HAYWIRE MODE */
+function goHaywire() {
+  document.querySelector(".flower").classList.add("haywire");
+}
+
+/* FINAL PETAL */
+function showFinalPetal() {
+  const final = document.createElement("div");
+  final.id = "finalPetal";
+  final.innerText = "💘";
+  final.style.display = "block";
+  final.style.transform = "translate(0, -130px)";
+  final.style.position = "absolute";
+  final.style.top = "100px";
+  final.style.left = "70px";
+
+  final.addEventListener("click", () => {
+    spawnFloatingWord("He LOVES you! 💘");
+    document.querySelector(".flower").classList.remove("haywire");
+    valentineAsk.classList.remove("hidden");
+  });
+
+  petalRing.appendChild(final);
 }
 
 /* YES / NO BUTTON LOGIC */
