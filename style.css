@@ -11,60 +11,108 @@ body {
   text-align: center;
 }
 
+.container {
+  position: relative;
+}
+
 .title {
-  font-size: 2.5rem;
-  text-shadow: 0 0 10px white;
+  font-size: 2.6rem;
+  text-shadow: 0 0 12px white;
+  margin-bottom: 20px;
 }
 
-.rose-container {
+/* FLOWER */
+.flower {
   position: relative;
+  width: 260px;
+  height: 260px;
+  margin: auto;
 }
 
-#rose {
-  position: relative;
-  margin-top: 20px;
-}
-
-#petals div {
-  width: 80px;
-  height: 40px;
-  background: pink;
-  border-radius: 50px;
+.flower-center {
+  width: 90px;
+  height: 90px;
+  background: #ffd84f;
+  border-radius: 50%;
   position: absolute;
+  top: 85px;
+  left: 85px;
+  box-shadow: 0 0 15px #fff;
+  z-index: 5;
+}
+
+#petalRing div {
+  width: 110px;
+  height: 55px;
+  background: #ff7aa8;
+  border-radius: 60px;
+  position: absolute;
+  top: 100px;
+  left: 75px;
+  transform-origin: 50% 100%;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  color: #b3003c;
   box-shadow: 0 0 10px white;
 }
 
-#petalText {
+/* STEM */
+.stem {
+  width: 22px;
+  height: 220px;
+  background: #3fa34d;
+  border-radius: 20px;
+  position: absolute;
+  top: 220px;
+  left: 120px;
+}
+
+/* LEAVES */
+.leaf {
+  width: 90px;
+  height: 45px;
+  background: #3fa34d;
+  border-radius: 50px;
+  position: absolute;
+  top: 280px;
+}
+
+.leaf.left {
+  left: 40px;
+  transform: rotate(-30deg);
+}
+
+.leaf.right {
+  left: 150px;
+  transform: rotate(30deg);
+}
+
+/* PETAL RESULT TEXT */
+#petalResult {
   margin-top: 20px;
   font-size: 1.8rem;
   min-height: 40px;
 }
 
-.hidden {
-  display: none;
+/* VALENTINE ASK */
+.ask {
+  font-size: 2rem;
+  margin-top: 20px;
 }
 
-/* YES BUTTON — BIG */
-#yesBtn {
-  background: #ff1744;
+/* YES BUTTON */
+.yes {
+  background: linear-gradient(135deg, #ff1744, #ff5f8f);
   color: white;
   font-size: 2rem;
-  padding: 20px 40px;
+  padding: 20px 45px;
   border: none;
-  border-radius: 16px;
+  border-radius: 50px;
   cursor: pointer;
   box-shadow: 0 0 20px #ff1744;
   margin-top: 20px;
 }
 
-/* NO BUTTON — SMALL & SLIPPERY */
-#noBtn {
+/* NO BUTTON */
+.no {
   background: #333;
   color: white;
   font-size: 0.8rem;
@@ -74,4 +122,9 @@ body {
   cursor: pointer;
   position: absolute;
   margin-left: 20px;
+}
+
+/* HIDDEN */
+.hidden {
+  display: none;
 }
