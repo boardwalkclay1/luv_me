@@ -91,7 +91,7 @@ function showFinalPetal() {
   final.style.top = "115px";
   final.style.left = "80px";
   final.style.transform = "translate(0, -95px)";
-  final.style.zIndex = "20";
+  final.style.zIndex = "30";
 
   final.addEventListener("click", () => {
     spawnFloatingWord("He LOVES you! 💘");
