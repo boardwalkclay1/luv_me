@@ -1,0 +1,77 @@
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #ff9ecb, #ff4f81);
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  text-shadow: 0 0 10px white;
+}
+
+.rose-container {
+  position: relative;
+}
+
+#rose {
+  position: relative;
+  margin-top: 20px;
+}
+
+#petals div {
+  width: 80px;
+  height: 40px;
+  background: pink;
+  border-radius: 50px;
+  position: absolute;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: #b3003c;
+  box-shadow: 0 0 10px white;
+}
+
+#petalText {
+  margin-top: 20px;
+  font-size: 1.8rem;
+  min-height: 40px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* YES BUTTON — BIG */
+#yesBtn {
+  background: #ff1744;
+  color: white;
+  font-size: 2rem;
+  padding: 20px 40px;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  box-shadow: 0 0 20px #ff1744;
+  margin-top: 20px;
+}
+
+/* NO BUTTON — SMALL & SLIPPERY */
+#noBtn {
+  background: #333;
+  color: white;
+  font-size: 0.8rem;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  position: absolute;
+  margin-left: 20px;
+}
