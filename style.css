@@ -10,7 +10,11 @@ body {
   color: white;
 }
 
-.layout { text-align: center; width: 100%; }
+.layout {
+  text-align: center;
+  width: 100%;
+  padding-bottom: 120px;
+}
 
 .title {
   font-size: 2.8rem;
@@ -18,7 +22,10 @@ body {
   margin-bottom: 10px;
 }
 
-.flower-area { height: 320px; margin-top: 10px; }
+.flower-area {
+  height: 320px;
+  margin-top: 10px;
+}
 
 .flower {
   position: relative;
@@ -28,7 +35,7 @@ body {
   z-index: 5;
 }
 
-/* 🌸 CENTER — pink like emoji */
+/* 🌸 Pink center */
 .center {
   width: 90px;
   height: 90px;
@@ -40,8 +47,9 @@ body {
   z-index: 10;
 }
 
-/* 🌸 PETALS — closer + emoji style */
-#petalRing div, #finalPetal {
+/* 🌸 Petals */
+#petalRing div,
+#finalPetal {
   width: 100px;
   height: 50px;
   background: radial-gradient(circle, #ffc2d8, #ff6f9d);
@@ -56,7 +64,7 @@ body {
   z-index: 12;
 }
 
-/* 🌿 STEM BEHIND EVERYTHING */
+/* 🌿 Stem behind everything */
 .stem {
   width: 20px;
   height: 240px;
@@ -81,7 +89,7 @@ body {
 .leaf.left { left: 30px; transform: rotate(-30deg); }
 .leaf.right { left: 150px; transform: rotate(30deg); }
 
-/* 💬 FLOATING WORDS */
+/* 💬 Floating words */
 .floatingWord {
   position: fixed;
   font-size: 2rem;
@@ -97,7 +105,7 @@ body {
   100% { opacity: 0; transform: translateY(-40px) scale(1.2); }
 }
 
-/* 🤯 HAYWIRE */
+/* 🤯 Haywire */
 .haywire { animation: shake .15s infinite; }
 
 @keyframes shake {
@@ -109,9 +117,10 @@ body {
 /* POPUPS */
 .popup {
   position: fixed;
-  bottom: -200px;
+  bottom: -150px;
   font-size: 4rem;
-  transition: bottom .6s;
+  transition: bottom .5s ease-out;
+  z-index: 9999;
 }
 
 .popup.show { bottom: 20px; }
@@ -121,7 +130,10 @@ body {
 .popup.chocolate { left: 70%; }
 
 /* VALENTINE ASK */
-.ask { font-size: 2.2rem; margin-top: 20px; }
+.ask {
+  font-size: 2.2rem;
+  margin-top: 20px;
+}
 
 .yes {
   background: #ff1744;
@@ -132,6 +144,7 @@ body {
   border-radius: 50px;
   cursor: pointer;
   margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 .no {
