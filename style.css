@@ -1,3 +1,4 @@
+/* GLOBAL */
 body {
   margin: 0;
   background: linear-gradient(135deg, #ff9ecb, #ff4f81);
@@ -14,6 +15,10 @@ body {
   text-align: center;
   width: 100%;
   padding-bottom: 120px;
+
+  /* FORCE THIS ABOVE FLOWER */
+  position: relative;
+  z-index: 999;
 }
 
 .title {
@@ -27,16 +32,41 @@ body {
   margin-top: 10px;
 }
 
-/* Flower container sits BELOW floating words & popups */
+/* FLOWER CONTAINER — BELOW TEXT */
 .flower {
   position: relative;
   width: 260px;
   height: 260px;
   margin: auto;
+  z-index: 10;
+}
+
+/* STEM — BEHIND EVERYTHING */
+.stem {
+  width: 20px;
+  height: 240px;
+  background: #3fa34d;
+  border-radius: 20px;
+  position: absolute;
+  top: 220px;
+  left: 120px;
+  z-index: 1;
+}
+
+.leaf {
+  width: 90px;
+  height: 45px;
+  background: #4ccf5f;
+  border-radius: 50px;
+  position: absolute;
+  top: 280px;
   z-index: 2;
 }
 
-/* Pink center */
+.leaf.left { left: 30px; transform: rotate(-30deg); }
+.leaf.right { left: 150px; transform: rotate(30deg); }
+
+/* CENTER + PETALS ABOVE STEM */
 .center {
   width: 90px;
   height: 90px;
@@ -45,10 +75,9 @@ body {
   position: absolute;
   top: 85px;
   left: 85px;
-  z-index: 10;
+  z-index: 20;
 }
 
-/* Petals */
 #petalRing div,
 #finalPetal {
   width: 100px;
@@ -62,42 +91,17 @@ body {
   cursor: pointer;
   box-shadow: 0 0 10px white;
   transition: transform .3s, opacity .4s;
-  z-index: 12;
+  z-index: 25;
 }
 
-/* Stem ALWAYS behind everything */
-.stem {
-  width: 20px;
-  height: 240px;
-  background: #3fa34d;
-  border-radius: 20px;
-  position: absolute;
-  top: 220px;
-  left: 120px;
-  z-index: 0;
-}
-
-.leaf {
-  width: 90px;
-  height: 45px;
-  background: #4ccf5f;
-  border-radius: 50px;
-  position: absolute;
-  top: 280px;
-  z-index: 1;
-}
-
-.leaf.left { left: 30px; transform: rotate(-30deg); }
-.leaf.right { left: 150px; transform: rotate(30deg); }
-
-/* Floating words */
+/* FLOATING WORDS — TOP LAYER */
 .floatingWord {
   position: fixed;
   font-size: 2rem;
   opacity: 0;
   animation: floatFade 2s forwards;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 99999;
 }
 
 @keyframes floatFade {
@@ -106,7 +110,7 @@ body {
   100% { opacity: 0; transform: translateY(-40px) scale(1.2); }
 }
 
-/* Haywire */
+/* HAYWIRE */
 .haywire { animation: shake .15s infinite; }
 
 @keyframes shake {
@@ -115,13 +119,13 @@ body {
   100% { transform: rotate(-3deg); }
 }
 
-/* Popups */
+/* POPUPS — TOP LAYER */
 .popup {
   position: fixed;
   bottom: -150px;
   font-size: 4rem;
   transition: bottom .5s ease-out;
-  z-index: 9999;
+  z-index: 99999;
 }
 
 .popup.show { bottom: 20px; }
@@ -130,7 +134,12 @@ body {
 .popup.rose { left: 45%; }
 .popup.chocolate { left: 70%; }
 
-/* Valentine ask */
+/* VALENTINE ASK — ABOVE EVERYTHING */
+#valentineAsk {
+  position: relative;
+  z-index: 999999;
+}
+
 .ask {
   font-size: 2.2rem;
   margin-top: 20px;
