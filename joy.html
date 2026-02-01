@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>You Said Yes 💘</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="center">
+    <h1 class="title">It fills me with joy that you said yes 💖</h1>
+    <p class="subtitle">Now choose your Valentine’s gift…</p>
+
+    <div class="gift-options">
+      <button class="giftBtn" onclick="location.href='gift-teddy.html'">🧸 Teddy Bear</button>
+      <button class="giftBtn" onclick="location.href='gift-rose.html'">🌹 Rose</button>
+      <button class="giftBtn" onclick="location.href='gift-chocolate.html'">🍫 Chocolates</button>
+    </div>
+  </div>
+
+  <script>
+    // Floating hearts
+    setInterval(() => {
+      const h = document.createElement("div");
+      h.classList.add("heart");
+      h.innerText = "💖";
+      h.style.left = Math.random() * window.innerWidth + "px";
+      h.style.top = window.innerHeight + "px";
+      h.style.fontSize = (Math.random() * 30 + 20) + "px";
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 3000);
+    }, 300);
+  </script>
+
+</body>
+</html>
